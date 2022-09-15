@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>weather</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'CSS/styles.css' %}">
+
+
+
+</head>
+<body>
+<div class="navbar">
+            <a href="#" class="logo"><img src="{% static 'images/car.png' %}"></a>
+            <ul class="menu">
+                <li class="menu_item"><a href="#">homepage</a></li>
+            </ul>       
+            <div class="buttons">
+                <a class="sign_in button" href="">sign in</a>
+                <a class="post button" href="">button</a>
+            </div>
+</div>
+    <div >
+        <h1 class="app"><b>weather_app</b></h1>
+        <div class="row">
+            <div class="col-5 offset-1">
+                <form action="" method="post">
+                    {% csrf_token %}
+                    <label for="city">city </label>
+                    {{ form.name }}
+
+                    <input type="submit" name="send" value="submit" class="post button">
+                </form>
+            </div>
+            <div class="col-5 offset-1">
+                <h1><b>information</b></h1>
+
+                {% for info in all_info %}
+                <div class="alert alert-light">
+                    <b>city:</b>{{ info.city }}<br>
+                    <b>temp:</b>{{ info.temp }}<sup>0</sup><br>
+                    <img src="http://openweathermap.org/img/w/{{ info.icon  }}.png" alt="photo"  class="img-thumbnail"
+
+
+                </div>
+                {% endfor %}
+
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>
